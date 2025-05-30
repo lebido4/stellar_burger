@@ -24,6 +24,7 @@ import { useEffect } from 'react';
 import { useDispatch } from '@store';
 import { fetchIngredients } from '../../services/slices/ingredients';
 import { resetOrderModalData } from '../../services/slices/orders';
+import { fetchUser } from '../../services/slices/user';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const App = () => {
 	const location = useLocation();
 	const state = location.state as { background?: Location };
 	useEffect(() => {
+		dispatch(fetchUser());
 		dispatch(fetchIngredients());
 	  }, [dispatch]);
 
